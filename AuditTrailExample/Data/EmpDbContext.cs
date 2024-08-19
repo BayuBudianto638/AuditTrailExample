@@ -64,6 +64,7 @@ namespace AuditTrailExample.Data
                     Changes = changes
                 });
             }
+
             return entityAuditInformation;
         }
         public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
@@ -93,6 +94,7 @@ namespace AuditTrailExample.Data
                         _ = await AddAsync(audit, cancellationToken);
                     }
                 }
+
                 //Save audit data
                 await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
             }

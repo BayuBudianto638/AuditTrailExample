@@ -11,6 +11,9 @@ namespace AuditTrailExample.Models
         public int Id { get; set; }
         public string Operation { get; set; }
         public string TableName { get; set; }
+
+        public string OldValue { get; set; }
+        public string NewValue { get; set; }
         public int RecordId { get; set; }
         public IEnumerable<AuditEntry> Changes { get; set; }
         public DateTime? ChangeDate { get; set; }
