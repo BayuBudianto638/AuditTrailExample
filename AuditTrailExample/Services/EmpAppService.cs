@@ -13,7 +13,7 @@ namespace AuditTrailExample.Services
         }
         public async Task<List<Employee>> GetAll()
         {
-            return await _context.Employees.Where(x => x.IsDeleted == false).ToListAsync();
+            return await _context.Employees.ToListAsync();
         }
         public async Task<Employee> GetById(int id)
         {
@@ -24,7 +24,8 @@ namespace AuditTrailExample.Services
             var record = await _context.Employees.FirstOrDefaultAsync(x => x.Id == id);
             if (record != null)
             {
-                record.IsDeleted = true;
+                //record.IsDeleted = true;
+                _context.Employees.Remove(record); 
                 await _context.SaveChangesAsync();
                 return true;
             }
